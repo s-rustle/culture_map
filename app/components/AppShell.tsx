@@ -30,9 +30,9 @@ export function AppShell({ user, children }: AppShellProps) {
 
   return (
     <div className="min-h-screen flex">
-      {/* Sidebar — dark #020023 */}
+      {/* Sidebar — dark #020023, responsive width on small screens */}
       <aside
-        className="w-56 flex flex-col shrink-0"
+        className="w-48 md:w-56 flex flex-col shrink-0 min-w-0"
         style={{ backgroundColor: "#020023" }}
       >
         <div className="p-5 border-b border-white/10">

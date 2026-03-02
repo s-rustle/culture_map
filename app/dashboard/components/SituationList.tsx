@@ -117,7 +117,7 @@ export function SituationList({ situations, loading }: SituationListProps) {
         <div className="rounded-lg border border-brand-light-gray-violet bg-white p-12 text-center">
           <p className="text-brand-charcoal-violet text-sm">
             {situations.length === 0
-              ? "No active situations — all clear across monitored countries."
+              ? "🟢 No active situations — all clear across monitored countries."
               : "No situations match the selected filters."}
           </p>
           <p className="text-brand-medium-gray-violet text-xs mt-1">

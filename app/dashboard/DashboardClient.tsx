@@ -54,14 +54,14 @@ export function DashboardClient() {
   }, [load]);
 
   return (
-    <div className="p-6">
+    <div className="p-4 sm:p-6 max-w-6xl mx-auto">
       <h2 className="text-xl font-semibold text-brand-dark-bg mb-2">Dashboard</h2>
       <p className="text-brand-charcoal-violet text-sm mb-6">
         Situational awareness across monitored countries. Map view coming soon.
       </p>
 
       {error && (
-        <div className="rounded-lg border border-red-200 bg-red-50 text-red-800 px-4 py-3 mb-6 text-sm">
+        <div className="rounded-lg border border-brand-light-gray-violet bg-brand-pale-lavender text-brand-violet px-4 py-3 mb-6 text-sm font-medium">
           {error}
         </div>
       )}

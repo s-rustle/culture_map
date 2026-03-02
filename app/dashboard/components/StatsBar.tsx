@@ -73,7 +73,7 @@ export function StatsBar({ stats, loading }: StatsBarProps) {
   ];
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-6">
       {items.map(({ label, value, icon: Icon }) => (
         <div
           key={label}

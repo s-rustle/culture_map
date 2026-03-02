@@ -34,10 +34,13 @@ export function ChatWindow({
   return (
     <div
       ref={scrollRef}
-      className="flex-1 overflow-y-auto rounded-lg border border-brand-light-gray-violet bg-brand-light-bg p-4 mb-4 min-h-[200px] flex flex-col"
+      className="flex-1 overflow-y-auto rounded-lg border border-brand-light-gray-violet bg-brand-light-bg p-3 sm:p-4 mb-4 min-h-[180px] sm:min-h-[200px] flex flex-col"
     >
       {history.length === 0 && !loading && (
-        <p className="text-brand-charcoal-violet text-sm py-4">{emptyMessage}</p>
+        <div className="text-brand-charcoal-violet text-sm py-6 space-y-2">
+          <p className="font-medium text-brand-dark-bg">What can I help with?</p>
+          <p className="whitespace-pre-wrap">{emptyMessage}</p>
+        </div>
       )}
       <div className="space-y-4">
         {history.map((h, i) => (

@@ -7,6 +7,15 @@
 
 import { useState } from "react";
 
+function Spinner() {
+  return (
+    <span
+      className="inline-block h-4 w-4 shrink-0 animate-spin rounded-full border-2 border-current border-t-transparent"
+      aria-hidden
+    />
+  );
+}
+
 interface ApprovalActionsProps {
   notificationId: number;
   onApproved?: () => void;
@@ -134,8 +143,7 @@ export function ApprovalActions({
           <button
             type="button"
             onClick={handleEditSave}
-            className="px-4 py-2 rounded text-sm font-medium text-white bg-brand-accent hover:bg-brand-accent/90"
-            style={{ backgroundColor: "#7357FF" }}
+            className="px-4 py-2 rounded text-sm font-medium text-brand-text-on-accent bg-brand-accent hover:bg-brand-accent-hover"
           >
             Save
           </button>
@@ -154,13 +162,13 @@ export function ApprovalActions({
   return (
     <div className="flex flex-col gap-2">
       <div className="flex flex-wrap gap-2">
-        <button
-          type="button"
-          onClick={handleApprove}
-          disabled={!!loading}
-          className="px-4 py-2 rounded text-sm font-medium text-white hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
-          style={{ backgroundColor: "#7357FF" }}
-        >
+          <button
+            type="button"
+            onClick={handleApprove}
+            disabled={!!loading}
+            className="px-4 py-2 rounded text-sm font-medium text-brand-text-on-accent bg-brand-accent hover:bg-brand-accent-hover disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center gap-2"
+          >
+          {loading === "approve" ? <Spinner /> : null}
           {loading === "approve" ? "Approving…" : "Approve"}
         </button>
         <button
@@ -175,13 +183,14 @@ export function ApprovalActions({
           type="button"
           onClick={handleDismiss}
           disabled={!!loading}
-          className="px-4 py-2 rounded text-sm font-medium text-brand-charcoal-violet border border-brand-light-gray-violet hover:bg-brand-pale-lavender disabled:opacity-50"
+          className="px-4 py-2 rounded text-sm font-medium text-brand-charcoal-violet border border-brand-light-gray-violet hover:bg-brand-pale-lavender disabled:opacity-50 inline-flex items-center gap-2"
         >
+          {loading === "dismiss" ? <Spinner /> : null}
           {loading === "dismiss" ? "Dismissing…" : "Dismiss"}
         </button>
       </div>
       {error && (
-        <p className="text-sm text-red-600">{error}</p>
+        <p className="text-sm text-brand-violet font-medium">{error}</p>
       )}
     </div>
   );

@@ -2,7 +2,7 @@
  * Run database migration
  *
  * Usage: npx tsx scripts/run-migration.ts
- * Requires: DATABASE_URL or POSTGRES_URL or SUPABASE_DB_URL in .env.local
+ * Requires: DATABASE_URL_POOLED, DATABASE_URL, POSTGRES_URL, or SUPABASE_DB_URL in .env.local
  */
 
 import { readFileSync } from "node:fs";
@@ -14,12 +14,13 @@ import { Pool } from "pg";
 config({ path: join(process.cwd(), ".env.local") });
 
 const connectionString =
+  process.env.DATABASE_URL_POOLED ||
   process.env.DATABASE_URL ||
   process.env.POSTGRES_URL ||
   process.env.SUPABASE_DB_URL;
 
 if (!connectionString) {
-  console.error("Missing connection string. Set DATABASE_URL, POSTGRES_URL, or SUPABASE_DB_URL in .env.local");
+  console.error("Missing connection string. Set DATABASE_URL_POOLED, DATABASE_URL, POSTGRES_URL, or SUPABASE_DB_URL in .env.local");
   process.exit(1);
 }
 

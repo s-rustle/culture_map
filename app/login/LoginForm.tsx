@@ -95,7 +95,7 @@ export function LoginForm() {
           </div>
 
           {error && (
-            <p className="text-sm text-red-600 bg-red-50 px-3 py-2 rounded">
+            <p className="text-sm text-brand-violet bg-brand-pale-lavender px-3 py-2 rounded font-medium">
               {error}
             </p>
           )}

@@ -10,6 +10,8 @@
   --color-brand-light-bg: #F7F6FE;
   --color-brand-dark-bg: #020023;
   --color-brand-accent: #7357FF;
+  --color-brand-accent-hover: #8B72FF;
+  --color-brand-text-on-accent: #FFFFFF;
   --color-brand-high-impact: #EBFF00;
   --color-brand-violet: #AD39FF;
   --color-brand-magenta: #E82DE8;
@@ -39,6 +41,8 @@
   --color-brand-light-bg: #F7F6FE;
   --color-brand-dark-bg: #020023;
   --color-brand-accent: #7357FF;
+  --color-brand-accent-hover: #8B72FF;
+  --color-brand-text-on-accent: #FFFFFF;
   --color-brand-high-impact: #EBFF00;
   --color-brand-violet: #AD39FF;
   --color-brand-magenta: #E82DE8;

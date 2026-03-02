@@ -69,10 +69,7 @@ export default function NotificationsPage() {
   };
 
   return (
-    <div
-      className="min-h-screen p-6"
-      style={{ backgroundColor: "#F7F6FE" }}
-    >
+    <div className="min-h-screen p-6 bg-brand-light-bg">
       <h2 className="text-xl font-semibold text-brand-dark-bg mb-4">
         Notifications
       </h2>
@@ -88,11 +85,6 @@ export default function NotificationsPage() {
                 ? "text-brand-accent border-b-2 border-brand-accent bg-white -mb-px"
                 : "text-brand-charcoal-violet hover:text-brand-dark-bg"
             }`}
-            style={
-              tab === t
-                ? { color: "#7357FF", borderBottomColor: "#7357FF" }
-                : undefined
-            }
           >
             {t === "pending" ? "Pending" : t === "sent" ? "Sent" : "Dismissed"}
           </button>
@@ -102,11 +94,13 @@ export default function NotificationsPage() {
       {loading ? (
         <p className="text-brand-charcoal-violet">Loading…</p>
       ) : notifications.length === 0 ? (
-        <p className="text-brand-charcoal-violet">
-          {tab === "pending" && "No pending notifications."}
-          {tab === "sent" && "No sent notifications yet."}
-          {tab === "dismissed" && "No dismissed notifications."}
-        </p>
+        <div className="rounded-lg border border-brand-light-gray-violet bg-white p-12 text-center">
+          <p className="text-brand-charcoal-violet">
+            {tab === "pending" && "No pending notifications."}
+            {tab === "sent" && "No sent notifications yet."}
+            {tab === "dismissed" && "No dismissed notifications."}
+          </p>
+        </div>
       ) : tab === "pending" ? (
         <div className="space-y-6">
           {notifications.map((n) => (

@@ -55,13 +55,13 @@ export default function AskPage() {
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error ?? "Request failed");
+        throw new Error(data.error ?? "Unable to check this region right now");
       }
 
       const reply = typeof data.response === "string" ? data.response : "";
       setHistory((prev) => [...prev, { role: "assistant", content: reply }]);
     } catch (e) {
-      const msg = e instanceof Error ? e.message : "Something went wrong";
+      const msg = e instanceof Error ? e.message : "Unable to check this region right now";
       setError(msg);
       setHistory((prev) => prev.slice(0, -1));
     } finally {
@@ -70,7 +70,7 @@ export default function AskPage() {
   }, [input, loading, conversationId]);
 
   return (
-    <div className="p-6 flex flex-col h-full max-h-[calc(100vh-0px)]">
+    <div className="p-4 sm:p-6 flex flex-col h-full max-h-[calc(100vh-0px)] min-h-0">
       <div className="flex items-center justify-between mb-2">
         <h2 className="text-xl font-semibold text-brand-dark-bg">Ask</h2>
         <button
@@ -89,7 +89,7 @@ export default function AskPage() {
       <ChatWindow
         history={history}
         loading={loading}
-        emptyMessage='Ask anything, e.g. "Check on our team in Brazil"'
+        emptyMessage="Ask about situations in your countries. Example queries: Check on our team in Brazil. What's happening in South Africa? Any weather alerts in Colombia?"
       />
 
       {error && (

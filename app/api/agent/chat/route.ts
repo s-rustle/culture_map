@@ -32,7 +32,7 @@ export async function POST(request: Request) {
   } catch (err) {
     console.error("Agent chat error:", err);
     return NextResponse.json(
-      { error: "Agent request failed" },
+      { error: "Unable to check this region right now" },
       { status: 500 }
     );
   }

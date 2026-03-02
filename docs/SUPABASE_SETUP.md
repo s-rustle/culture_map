@@ -15,10 +15,10 @@ Format: `postgresql://postgres.[project-ref]:[password]@aws-0-[region].pooler.su
 ## 2. Add to .env.local
 
 ```
-DATABASE_URL=postgresql://postgres.xxxxx:your-password@aws-0-us-east-1.pooler.supabase.com:6543/postgres
+DATABASE_URL_POOLED=postgresql://postgres.xxxxx:your-password@aws-0-us-east-1.pooler.supabase.com:6543/postgres
 ```
 
-Or use `SUPABASE_DB_URL` as the variable name.
+Or `DATABASE_URL`, `POSTGRES_URL`, or `SUPABASE_DB_URL` (pooled connection preferred).
 
 ## 3. Run the migration
 

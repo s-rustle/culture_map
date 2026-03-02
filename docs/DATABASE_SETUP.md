@@ -41,18 +41,12 @@ Or use Neon's SQL Editor:
 
 ### 3. Connection string
 
-The app uses `DATABASE_URL` or `POSTGRES_URL` (in that order). Set one in `.env.local`:
+The app uses **pooled** connections. Connection order: `DATABASE_URL_POOLED` → `DATABASE_URL` → `POSTGRES_URL` → `SUPABASE_DB_URL`.
 
-```
-# Option A: Use POSTGRES_URL (from Vercel env pull)
-POSTGRES_URL=postgres://user:password@host/db?sslmode=require
+- **Vercel:** Set `DATABASE_URL_POOLED` to your pooled URI; the Vercel-managed `DATABASE_URL` is often direct and will fail.
+- **Supabase:** Use pooled URI (port **6543**, host `aws-0-XX.pooler.supabase.com`) — see [SUPABASE_SETUP.md](./SUPABASE_SETUP.md)
 
-# Option B: Use DATABASE_URL (same format)
-DATABASE_URL=postgres://user:password@host.neon.tech/dbname?sslmode=require
-```
-
-Neon connection strings typically look like:
-`postgres://USER:PASSWORD@ep-XXX-XXX.region.aws.neon.tech/neondb?sslmode=require`
+If pool creation fails at build time, the app continues with empty DB data.
 
 ### 4. Client usage
 

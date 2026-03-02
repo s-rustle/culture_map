@@ -13,7 +13,7 @@ type GeoLookup = {
   country_defaults: Record<string, [number, number, string]>;
 };
 
-const lookup = geoData as GeoLookup;
+const lookup = geoData as unknown as GeoLookup;
 
 function normalizeKey(s: string): string {
   return s

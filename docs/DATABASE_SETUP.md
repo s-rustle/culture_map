@@ -46,16 +46,15 @@ The app uses native `pg` — **both direct and pooled** connection strings work.
 - **Vercel:** Use `DATABASE_URL` (Vercel-managed) or add `DATABASE_URL_POOLED` with your Supabase pooled URI.
 - **Supabase:** Direct (port 5432) or pooled (port 6543) both work. See [SUPABASE_SETUP.md](./SUPABASE_SETUP.md)
 
-### 4. Seed demo data (optional)
+### 4. Ingest real data from known-events + roster
 
-To show situations and "Last scan" on the dashboard:
+To populate situations from your `data/known-events.json` and `data/roster.csv`:
 
 ```bash
-# Ensure .env.local has DATABASE_URL_POOLED (or DATABASE_URL) pointing to your DB
-npm run db:seed-situations
+npm run db:ingest-known-events
 ```
 
-This inserts 5 sample situations (Brazil, Argentina, Colombia, South Africa) and a scan_history row. Run locally against production DB by using the same connection string as Vercel.
+Filters to countries in roster or `PRIORITY_COUNTRIES`, counts affected consultants per country. Or click "Load real data" in the dashboard (admin only).
 
 ### 5. Client usage
 

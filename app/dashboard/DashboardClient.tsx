@@ -54,7 +54,7 @@ export function DashboardClient() {
     return () => clearInterval(interval);
   }, [load]);
 
-  async function seedDemoData() {
+  async function loadRealData() {
     setSeeding(true);
     setError(null);
     try {
@@ -87,14 +87,14 @@ export function DashboardClient() {
       <h3 className="text-lg font-medium text-brand-dark-bg mb-3">Active situations</h3>
       {stats?.is_admin && situations.length === 0 && !loading && (
         <div className="mb-4 rounded-lg border border-brand-light-gray-violet bg-brand-pale-lavender p-4">
-          <p className="text-sm text-brand-charcoal-violet mb-2">No data yet. Seed demo situations to preview the dashboard.</p>
+          <p className="text-sm text-brand-charcoal-violet mb-2">No data yet. Load situations from your known-events.json + roster.</p>
           <button
             type="button"
-            onClick={seedDemoData}
+            onClick={loadRealData}
             disabled={seeding}
             className="px-4 py-2 rounded font-medium text-white bg-brand-accent hover:bg-brand-accent/90 disabled:opacity-50"
           >
-            {seeding ? "Seeding…" : "Seed demo data"}
+            {seeding ? "Loading…" : "Load real data"}
           </button>
         </div>
       )}

@@ -48,7 +48,18 @@ The app uses **pooled** connections. Connection order: `DATABASE_URL_POOLED` →
 
 If pool creation fails at build time, the app continues with empty DB data.
 
-### 4. Client usage
+### 4. Seed demo data (optional)
+
+To show situations and "Last scan" on the dashboard:
+
+```bash
+# Ensure .env.local has DATABASE_URL_POOLED (or DATABASE_URL) pointing to your DB
+npm run db:seed-situations
+```
+
+This inserts 5 sample situations (Brazil, Argentina, Colombia, South Africa) and a scan_history row. Run locally against production DB by using the same connection string as Vercel.
+
+### 5. Client usage
 
 ```typescript
 import { sql, isDatabaseConfigured } from "@/lib/db";

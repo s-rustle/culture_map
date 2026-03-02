@@ -12,6 +12,7 @@ export interface DashboardStats {
   active_situations: number;
   consultants_affected: number;
   last_scan_at: string | null;
+  is_admin?: boolean;
 }
 
 function formatLastScan(iso: string | null): string {

@@ -135,7 +135,12 @@ async function main() {
       );
     }
 
-    console.log(`✓ Seeded ${SEED_SITUATIONS.length} situations.`);
+    // Add a scan_history row so "Last scan" shows something
+    await pool.query(
+      `INSERT INTO scan_history (scan_type, countries_scanned, situations_found, duration_ms) VALUES ($1, $2, $3, $4)`,
+      ["seed", "BR,AR,CO,ZA", SEED_SITUATIONS.length, 0]
+    );
+    console.log(`✓ Seeded ${SEED_SITUATIONS.length} situations and scan_history.`);
   } catch (err) {
     console.error("Seed failed:", err);
     process.exit(1);

@@ -30,6 +30,7 @@ export function DashboardClient() {
   const [situations, setSituations] = useState<Situation[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [seeding, setSeeding] = useState(false);
 
   const load = useCallback(async () => {
     setError(null);
@@ -53,6 +54,21 @@ export function DashboardClient() {
     return () => clearInterval(interval);
   }, [load]);
 
+  async function seedDemoData() {
+    setSeeding(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/seed", { method: "POST", credentials: "include" });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error ?? "Seed failed");
+      await load();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Failed to seed");
+    } finally {
+      setSeeding(false);
+    }
+  }
+
   return (
     <div className="p-4 sm:p-6 max-w-6xl mx-auto">
       <h2 className="text-xl font-semibold text-brand-dark-bg mb-2">Dashboard</h2>
@@ -69,6 +85,19 @@ export function DashboardClient() {
       <StatsBar stats={stats ?? { countries_monitored: 0, active_situations: 0, consultants_affected: 0, last_scan_at: null }} loading={loading} />
 
       <h3 className="text-lg font-medium text-brand-dark-bg mb-3">Active situations</h3>
+      {stats?.is_admin && situations.length === 0 && !loading && (
+        <div className="mb-4 rounded-lg border border-brand-light-gray-violet bg-brand-pale-lavender p-4">
+          <p className="text-sm text-brand-charcoal-violet mb-2">No data yet. Seed demo situations to preview the dashboard.</p>
+          <button
+            type="button"
+            onClick={seedDemoData}
+            disabled={seeding}
+            className="px-4 py-2 rounded font-medium text-white bg-brand-accent hover:bg-brand-accent/90 disabled:opacity-50"
+          >
+            {seeding ? "Seeding…" : "Seed demo data"}
+          </button>
+        </div>
+      )}
       <SituationList situations={situations} loading={loading} />
     </div>
   );

@@ -25,11 +25,13 @@ export async function GET() {
       active_situations: number;
       consultants_affected: number;
       last_scan_at: string | null;
+      is_admin?: boolean;
     } = {
       countries_monitored: 0,
       active_situations: 0,
       consultants_affected: 0,
       last_scan_at: null,
+      is_admin: user.is_admin,
     };
 
     // Roster: distinct countries count

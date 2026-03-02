@@ -41,12 +41,10 @@ Or use Neon's SQL Editor:
 
 ### 3. Connection string
 
-The app uses **pooled** connections. Connection order: `DATABASE_URL_POOLED` → `DATABASE_URL` → `POSTGRES_URL` → `SUPABASE_DB_URL`.
+The app uses native `pg` — **both direct and pooled** connection strings work. Order: `DATABASE_URL_POOLED` → `DATABASE_URL` → `POSTGRES_URL` → `SUPABASE_DB_URL`.
 
-- **Vercel:** Set `DATABASE_URL_POOLED` to your pooled URI; the Vercel-managed `DATABASE_URL` is often direct and will fail.
-- **Supabase:** Use pooled URI (port **6543**, host `aws-0-XX.pooler.supabase.com`) — see [SUPABASE_SETUP.md](./SUPABASE_SETUP.md)
-
-If pool creation fails at build time, the app continues with empty DB data.
+- **Vercel:** Use `DATABASE_URL` (Vercel-managed) or add `DATABASE_URL_POOLED` with your Supabase pooled URI.
+- **Supabase:** Direct (port 5432) or pooled (port 6543) both work. See [SUPABASE_SETUP.md](./SUPABASE_SETUP.md)
 
 ### 4. Seed demo data (optional)
 

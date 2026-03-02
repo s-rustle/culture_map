@@ -39,25 +39,23 @@ function rowToSituation(row: Record<string, unknown>): Situation {
 }
 
 export async function GET(request: Request) {
-  try {
-    const user = await getSession();
-    if (!user) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
+  const user = await getSession();
+  if (!user) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
 
-    const { searchParams } = new URL(request.url);
-    const countryCode = searchParams.get("country")?.toUpperCase();
-    const severity = searchParams.get("severity")?.toLowerCase();
-    const eventType = searchParams.get("event_type")?.toLowerCase();
+  const { searchParams } = new URL(request.url);
+  const countryCode = searchParams.get("country")?.toUpperCase();
+  const severity = searchParams.get("severity")?.toLowerCase();
+  const eventType = searchParams.get("event_type")?.toLowerCase();
 
-    let situations: Situation[] = [];
+  let situations: Situation[] = [];
 
-    if (isDatabaseConfigured() && sql) {
-      let allowedCountryCodes: string[] | null = null;
-      if (!user.is_admin) {
-        const { rows } = await sql`
-          SELECT c.id FROM coaches c WHERE c.email = ${user.email}
-        `;
+  if (isDatabaseConfigured() && sql) {
+    let allowedCountryCodes: string[] | null = null;
+    if (!user.is_admin) {
+      try {
+        const { rows } = await sql`SELECT c.id FROM coaches c WHERE c.email = ${user.email}`;
         const coachRow = rows[0] as { id: number } | undefined;
         if (coachRow) {
           const { rows: subs } = await sql`
@@ -68,8 +66,12 @@ export async function GET(request: Request) {
         if (allowedCountryCodes?.length === 0) {
           return NextResponse.json({ situations: [] });
         }
+      } catch {
+        /* coaches table may not exist */
       }
+    }
 
+    try {
       const { rows } = await sql`
         SELECT id, country_code, country, region, city, event_type, severity,
                title, summary, source_url, source_name, infrastructure_impact,
@@ -97,14 +99,10 @@ export async function GET(request: Request) {
           if (eventType && s.event_type !== eventType) return false;
           return true;
         });
+    } catch (err) {
+      console.warn("Situations query failed:", (err as Error).message);
     }
-
-    return NextResponse.json({ situations });
-  } catch (err) {
-    console.error("Situations active error:", err);
-    return NextResponse.json(
-      { error: "Failed to load situations" },
-      { status: 500 }
-    );
   }
+
+  return NextResponse.json({ situations });
 }

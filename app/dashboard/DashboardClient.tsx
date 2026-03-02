@@ -14,15 +14,22 @@ const REFRESH_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
 
 async function fetchStats(): Promise<DashboardStats> {
   const res = await fetch("/api/dashboard/stats", { credentials: "include" });
-  if (!res.ok) throw new Error("Failed to load stats");
-  return res.json();
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    const msg = data?.error ?? "Failed to load stats";
+    throw new Error(res.status === 401 ? `${msg} — try signing in again.` : msg);
+  }
+  return data;
 }
 
 async function fetchSituations(): Promise<Situation[]> {
   const res = await fetch("/api/situations/active", { credentials: "include" });
-  if (!res.ok) throw new Error("Failed to load situations");
-  const { situations } = await res.json();
-  return situations;
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    const msg = data?.error ?? "Failed to load situations";
+    throw new Error(res.status === 401 ? `${msg} — try signing in again.` : msg);
+  }
+  return data.situations ?? [];
 }
 
 export function DashboardClient() {

@@ -1,26 +1,62 @@
 @import "tailwindcss";
 
+/* Lumenalta Brand Design Tokens — Global Pulse */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary palette */
+  --background: #F7F6FE;
+  --foreground: #020023;
+
+  /* Brand colors for Tailwind utilities */
+  --color-brand-light-bg: #F7F6FE;
+  --color-brand-dark-bg: #020023;
+  --color-brand-accent: #7357FF;
+  --color-brand-high-impact: #EBFF00;
+  --color-brand-violet: #AD39FF;
+  --color-brand-magenta: #E82DE8;
+  --color-brand-dark-indigo: #282859;
+  --color-brand-pale-lavender: #ECEAF8;
+  --color-brand-light-gray-violet: #DCDAED;
+  --color-brand-medium-gray-violet: #A1A1C6;
+  --color-brand-charcoal-violet: #57576B;
+
+  /* Severity mapping */
+  --color-severity-low: #4ADE80;
+  --color-severity-moderate: #EBFF00;
+  --color-severity-moderate-opacity: rgba(235, 255, 0, 0.4);
+  --color-severity-high: #AD39FF;
+  --color-severity-high-accent: #F59E0B;
+  --color-severity-critical: #EBFF00;
+  --color-severity-critical-bg: #020023;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-sans: var(--font-inter), "Public Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Brand colors — use via bg-brand-accent, text-brand-violet, etc. */
+  --color-brand-light-bg: #F7F6FE;
+  --color-brand-dark-bg: #020023;
+  --color-brand-accent: #7357FF;
+  --color-brand-high-impact: #EBFF00;
+  --color-brand-violet: #AD39FF;
+  --color-brand-magenta: #E82DE8;
+  --color-brand-dark-indigo: #282859;
+  --color-brand-pale-lavender: #ECEAF8;
+  --color-brand-light-gray-violet: #DCDAED;
+  --color-brand-medium-gray-violet: #A1A1C6;
+  --color-brand-charcoal-violet: #57576B;
+  --color-severity-low: #4ADE80;
+  --color-severity-moderate: #EBFF00;
+  --color-severity-high: #AD39FF;
+  --color-severity-high-accent: #F59E0B;
+  --color-severity-critical: #EBFF00;
+  --color-severity-critical-bg: #020023;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }

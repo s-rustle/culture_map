@@ -1,0 +1,167 @@
+[
+  {
+    "id": "ke-001",
+    "title": "Russia-Ukraine conflict",
+    "description": "Ongoing armed conflict between Russia and Ukraine. Affects consultants in Ukraine and neighboring countries. Evacuation orders, infrastructure damage, and border closures have disrupted work. Some Ukrainian consultants have relocated to Poland or other EU countries.",
+    "event_type": "conflict",
+    "countries_affected": ["UA", "RU", "PL", "MD", "RO"],
+    "severity": "high",
+    "recurring": false,
+    "typical_dates": null,
+    "infrastructure_impact": "power, internet, transport"
+  },
+  {
+    "id": "ke-002",
+    "title": "Sudan civil war",
+    "description": "Ongoing armed conflict between Sudanese Armed Forces and Rapid Support Forces. Widespread violence in Khartoum and Darfur. Airports closed intermittently. Power and communications frequently disrupted.",
+    "event_type": "conflict",
+    "countries_affected": ["SD"],
+    "severity": "critical",
+    "recurring": false,
+    "typical_dates": null,
+    "infrastructure_impact": "power, internet, transport"
+  },
+  {
+    "id": "ke-003",
+    "title": "Myanmar civil conflict",
+    "description": "Ongoing conflict between military junta and resistance forces. Internet shutdowns, curfews, and travel restrictions common. Yangon and Mandalay experience periodic disruptions.",
+    "event_type": "conflict",
+    "countries_affected": ["MM"],
+    "severity": "high",
+    "recurring": false,
+    "typical_dates": null,
+    "infrastructure_impact": "internet, transport"
+  },
+  {
+    "id": "ke-004",
+    "title": "Israel-Palestine conflict",
+    "description": "Ongoing conflict with periodic escalations. Rocket attacks, border closures, and travel restrictions affect Tel Aviv, Jerusalem, and Gaza. International flight cancellations during peak conflict periods.",
+    "event_type": "conflict",
+    "countries_affected": ["IL", "PS"],
+    "severity": "high",
+    "recurring": false,
+    "typical_dates": null,
+    "infrastructure_impact": "transport"
+  },
+  {
+    "id": "ke-005",
+    "title": "Atlantic hurricane season",
+    "description": "Annual hurricane season in the North Atlantic. Peak activity August-October. Affects Caribbean islands, Central America, Mexico Gulf Coast, and US Southeast. Tropical storms and hurricanes can cause power outages, flooding, and travel disruptions lasting days to weeks.",
+    "event_type": "weather",
+    "countries_affected": ["US", "MX", "CU", "JM", "HT", "DO", "PR", "BS", "CO", "PA", "CR", "NI", "HN", "GT", "BZ"],
+    "severity": "moderate",
+    "recurring": true,
+    "typical_dates": "June 1 - November 30",
+    "infrastructure_impact": "power, internet, transport"
+  },
+  {
+    "id": "ke-006",
+    "title": "South Asian monsoon season",
+    "description": "Annual monsoon brings heavy rainfall to India, Bangladesh, Sri Lanka, Nepal, and Pakistan. June-September. Flooding in low-lying areas, landslides in hill regions. Power outages and internet disruptions in flood-affected zones.",
+    "event_type": "weather",
+    "countries_affected": ["IN", "BD", "LK", "NP", "PK"],
+    "severity": "moderate",
+    "recurring": true,
+    "typical_dates": "June - September",
+    "infrastructure_impact": "power, internet, transport"
+  },
+  {
+    "id": "ke-007",
+    "title": "South American rainy season",
+    "description": "Rainy season varies by region: Andean countries (Colombia, Ecuador, Peru) October-May; Brazil and Argentina September-April. Flooding in La Plata basin (Buenos Aires, Montevideo), landslides in Andean cities (Quito, La Paz), mudslides in Brazilian favelas.",
+    "event_type": "weather",
+    "countries_affected": ["BR", "AR", "UY", "CO", "EC", "PE", "BO"],
+    "severity": "low",
+    "recurring": true,
+    "typical_dates": "September - April (varies by region)",
+    "infrastructure_impact": "transport"
+  },
+  {
+    "id": "ke-008",
+    "title": "Brazil Carnival",
+    "description": "Major national celebration in February/March. Rio, São Paulo, Salvador, Recife effectively shut down for 4-7 days. Roads closed, public transport overwhelmed, many businesses closed. Operationally equivalent to weather disruption—city stops functioning.",
+    "event_type": "celebration",
+    "countries_affected": ["BR"],
+    "severity": "moderate",
+    "recurring": true,
+    "typical_dates": "February - March (variable by lunar calendar)",
+    "infrastructure_impact": "transport"
+  },
+  {
+    "id": "ke-009",
+    "title": "Semana Santa (Holy Week)",
+    "description": "Holy Week across Latin America. Major holiday—many offices closed, travel surges, reduced availability. Particularly impactful in Mexico, Colombia, Peru, Ecuador, and Central America. Thursday-Friday typically minimal staffing.",
+    "event_type": "celebration",
+    "countries_affected": ["MX", "CO", "PE", "EC", "CR", "SV", "GT", "HN", "NI", "AR", "CL", "UY"],
+    "severity": "low",
+    "recurring": true,
+    "typical_dates": "March or April (variable)",
+    "infrastructure_impact": null
+  },
+  {
+    "id": "ke-010",
+    "title": "South Africa load shedding (Eskom)",
+    "description": "Scheduled power outages implemented by Eskom due to grid instability. Affects all provinces with varying severity. Stages 1-6 determine duration (2-4+ hours per day). Johannesburg, Cape Town, Durban all affected.",
+    "event_type": "infrastructure",
+    "countries_affected": ["ZA"],
+    "severity": "moderate",
+    "recurring": true,
+    "typical_dates": "Ongoing, year-round; often worse in winter (May-August)",
+    "infrastructure_impact": "power, internet"
+  },
+  {
+    "id": "ke-011",
+    "title": "Argentina power and internet volatility",
+    "description": "Periodic power outages and internet instability in Buenos Aires and major cities. Economic conditions have delayed infrastructure investment. Outages often correlate with heat waves (Dec-Feb) when demand spikes.",
+    "event_type": "infrastructure",
+    "countries_affected": ["AR"],
+    "severity": "low",
+    "recurring": true,
+    "typical_dates": "Year-round; peaks during summer heat waves",
+    "infrastructure_impact": "power, internet"
+  },
+  {
+    "id": "ke-012",
+    "title": "Pakistan internet restrictions",
+    "description": "Periodic government-ordered internet slowdowns or shutdowns during political unrest or security events. Mobile and broadband both affected. Lahore, Karachi, Islamabad can experience hour-to-day-long disruptions.",
+    "event_type": "infrastructure",
+    "countries_affected": ["PK"],
+    "severity": "moderate",
+    "recurring": false,
+    "typical_dates": "Event-driven, unpredictable",
+    "infrastructure_impact": "internet"
+  },
+  {
+    "id": "ke-013",
+    "title": "Nigeria power and connectivity challenges",
+    "description": "Frequent power outages across Lagos, Abuja, and other cities. Many rely on generators. Internet can be unstable during outages. Undersea cable cuts have caused multi-country outages.",
+    "event_type": "infrastructure",
+    "countries_affected": ["NG"],
+    "severity": "moderate",
+    "recurring": true,
+    "typical_dates": "Ongoing, year-round",
+    "infrastructure_impact": "power, internet"
+  },
+  {
+    "id": "ke-014",
+    "title": "Philippines typhoon season",
+    "description": "Typhoon season June-November, peak September-October. Philippines averages 20 typhoons per year. Luzon (Manila) and Visayas most affected. Flooding, power outages, and evacuations common.",
+    "event_type": "weather",
+    "countries_affected": ["PH"],
+    "severity": "moderate",
+    "recurring": true,
+    "typical_dates": "June - November",
+    "infrastructure_impact": "power, internet, transport"
+  },
+  {
+    "id": "ke-015",
+    "title": "European heat waves",
+    "description": "Increasingly common summer heat waves across Southern and Western Europe. Spain, Portugal, Italy, France can exceed 40°C. Power grid strain, wildfire risk, and health advisories may affect work capacity.",
+    "event_type": "weather",
+    "countries_affected": ["ES", "PT", "IT", "FR"],
+    "severity": "low",
+    "recurring": true,
+    "typical_dates": "June - August",
+    "infrastructure_impact": "power"
+  }
+]

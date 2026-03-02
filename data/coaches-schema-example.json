@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Sarah Russell",
+    "email": "sarah.russell@lumenalta.com",
+    "timezone": "America/Chicago",
+    "is_admin": true
+  },
+  {
+    "name": "Coach Example",
+    "email": "coach@lumenalta.com",
+    "timezone": "America/New_York",
+    "is_admin": false
+  }
+]

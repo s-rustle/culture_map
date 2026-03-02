@@ -37,7 +37,10 @@ export function validateLogin(
 ): AuthResult {
   const expectedPassword = process.env.AUTH_PASSWORD;
   if (!expectedPassword) {
-    return { success: false, error: "Auth not configured" };
+    return {
+      success: false,
+      error: "Auth not configured. Set AUTH_PASSWORD and SESSION_SECRET in Vercel (Settings → Environment Variables) or .env.local.",
+    };
   }
   if (password !== expectedPassword) {
     return { success: false, error: "Invalid credentials" };

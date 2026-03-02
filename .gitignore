@@ -33,6 +33,9 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# spec story history (may contain API keys from chat logs)
+.specstory/
+
 # vercel
 .vercel
 

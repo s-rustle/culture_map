@@ -13,10 +13,14 @@ import type { SessionUser } from "./types";
 const COOKIE_NAME = "global-pulse-session";
 const SESSION_DURATION_SEC = 60 * 60 * 24 * 7; // 7 days
 
+// Fallback when env vars not set (e.g. Vercel env not configured) — allows demo login
+const FALLBACK_SECRET = "fallback-dev-secret-min-32-chars";
+const FALLBACK_PASSWORD = "demo";
+
 function getSecret(): Uint8Array {
   const secret = process.env.SESSION_SECRET;
   if (!secret || secret.length < 32) {
-    throw new Error("SESSION_SECRET env var required (min 32 chars)");
+    return new TextEncoder().encode(FALLBACK_SECRET);
   }
   return new TextEncoder().encode(secret);
 }
@@ -35,13 +39,7 @@ export function validateLogin(
   email: string,
   password: string
 ): AuthResult {
-  const expectedPassword = process.env.AUTH_PASSWORD;
-  if (!expectedPassword) {
-    return {
-      success: false,
-      error: "Auth not configured. Set AUTH_PASSWORD and SESSION_SECRET in Vercel (Settings → Environment Variables) or .env.local.",
-    };
-  }
+  const expectedPassword = process.env.AUTH_PASSWORD || FALLBACK_PASSWORD;
   if (password !== expectedPassword) {
     return { success: false, error: "Invalid credentials" };
   }

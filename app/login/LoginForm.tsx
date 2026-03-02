@@ -107,6 +107,9 @@ export function LoginForm() {
           >
             {loading ? "Signing in…" : "Sign in"}
           </button>
+          <p className="text-xs text-brand-medium-gray-violet text-center mt-2">
+            No env configured? Use password <code className="bg-brand-pale-lavender px-1 rounded">demo</code>
+          </p>
         </form>
       </div>
     </div>

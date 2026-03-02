@@ -1,17 +1,18 @@
 /**
- * Global Pulse — Dashboard (Amendment 1)
+ * Global Pulse — Dashboard (Phase 3.5)
  *
- * Role-aware: coaches see subscribed countries, admin sees all.
- * Placeholder until full dashboard UI is built.
+ * StatsBar + SituationList. Fetches from situations table.
+ * Coaches: filter to subscribed countries. Admin: all.
+ * Auto-refreshes every 5 minutes.
  */
 
-export default function DashboardPage() {
-  return (
-    <div className="p-6">
-      <h2 className="text-xl font-semibold text-brand-dark-bg mb-2">Dashboard</h2>
-      <p className="text-brand-charcoal-violet">
-        Main dashboard view. Situations, map, and stats will appear here.
-      </p>
-    </div>
-  );
+import { getSession } from "@/lib/auth";
+import { redirect } from "next/navigation";
+import { DashboardClient } from "./DashboardClient";
+
+export default async function DashboardPage() {
+  const user = await getSession();
+  if (!user) redirect("/login");
+
+  return <DashboardClient />;
 }
